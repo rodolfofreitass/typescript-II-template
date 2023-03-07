@@ -6,7 +6,8 @@
   "scripts": {
     "start-pratica": "tsc && node ./build/index.js",
     "start-ex-1": "tsc && node ./build/fixacao/exercicio1/index.js",
-    "start-ex-2": "tsc && node ./build/fixacao/exercicio2/index.js"
+    "start-ex-2": "tsc && node ./build/fixacao/exercicio2/index.js",
+    "start": "tsc && node ./build/index.js"
   },
   "repository": {
     "type": "git",
@@ -21,5 +22,8 @@
   "homepage": "https://github.com/labenuexercicios/typescript-II-template#readme",
   "devDependencies": {
     "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "react-router-dom": "^6.8.2"
   }
 }

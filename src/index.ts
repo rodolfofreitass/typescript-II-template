@@ -1,34 +1,68 @@
-/* PRÁTICA GUIADA - Parte 1
-Crie um sistema de cadastro de usuários que contenha:
+enum ACCOUNT {
+  ADMIN = 'admin',
+  NORMAL = 'normal',
+}
 
-1. Type Alias para uma pessoa (Person) com as propriedades id, name, email, password e role;
-2. Type Aliases de conta, com as propriedades account e permission: 
-  a. AdminAccount 
-  b. NormalAccount
-*/
+type Person = {
+  id: string,
+  name: string,
+  email: string,
+  password: string,
+  role: ACCOUNT
+}
+
+// ALIASES PERMISSÃO
+
+type adminAccount = {
+  account: string,
+  permission: boolean
+}
+
+type normalAccount = {
+  account: string,
+  permission: boolean
+}
+
+// CRIACÃO DA PESSOA
+
+const Rodolfo : Person = {
+  id: '38',
+  name: 'Rodolfo Freitas',
+  email: 'rodolfo@gmail.com',
+  password: '234344',
+  role:ACCOUNT.ADMIN
+}
 
 
+type adminPerson = Person & adminAccount
+type normalPerson = Person & normalAccount
+type unionPerson = normalPerson | adminPerson
 
+const adminPersonArray : Array <adminPerson> =[]
+const normalPersonArray : Array <normalPerson> =[]
+const unionPersonArray : Array <unionPerson> =[]
 
+const userNormal_1 :normalPerson ={
+  id: '0022',
+  name: 'Antonio',
+  email: 'antonio@gmail.com',
+  password: '1234556',
+  role: ACCOUNT.NORMAL,
+  account: 'DrAntonio',
+  permission: false
+}
 
+const userAdmin_1 : adminPerson ={
+  id: 'd3333',
+  name: 'Chay',
+  email: 'chay@gmail.com',
+  password: '444555',
+  role: ACCOUNT.ADMIN,
+  account: 'Dra Chay',
+  permission: true
+}
 
+unionPersonArray.push(userNormal_1)
+unionPersonArray.push(userAdmin_1)
 
-
-
-
-
-
-
-
-
-
-/* PRÁTICA GUIADA - Parte 2
-Vamos continuar nosso sistema de cadastro de usuários criando:
-
-1. Enum com valores ADMIN e NORMAL;
-2. Tipo Intersection unindo: pessoa(Person) + permissão (Role);
-3. Um array de usuários que permite guardar apenas usuários do tipo Person + Role;
-4. Crie duas pessoas, uma com permissão normal e a outra admin;
-5. Guarde essas pessoas no array de usuários.
-
-*/ 
+console.table(unionPersonArray)
